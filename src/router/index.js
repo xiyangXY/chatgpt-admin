@@ -8,7 +8,7 @@ import Layout from '@/layout'
 
 /* Router Modules */
 import componentsRouter from './modules/components'
-import chartsRouter from './modules/charts'
+// import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
 
@@ -60,16 +60,16 @@ export const constantRoutes = [
     component: () => import('@/views/login/auth-redirect'),
     hidden: true
   },
-  {
-    path: '/404',
-    component: () => import('@/views/error-page/404'),
-    hidden: true
-  },
-  {
-    path: '/401',
-    component: () => import('@/views/error-page/401'),
-    hidden: true
-  },
+  // {
+  //   path: '/404',
+  //   component: () => import('@/views/error-page/404'),
+  //   hidden: true
+  // },
+  // {
+  //   path: '/401',
+  //   component: () => import('@/views/error-page/401'),
+  //   hidden: true
+  // },
   {
     path: '/',
     component: Layout,
@@ -84,30 +84,54 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/documentation',
+    path: '/userManagement',
     component: Layout,
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'documentation', icon: 'documentation', affix: true }
+        path: 'userManagement',
+        component: () => import('@/views/user-management/index'),
+        name: 'userManagement',
+        meta: { title: '用户管理', icon: 'user', affix: false }
       }
     ]
   },
   {
-    path: '/guide',
+    path: '/questionAnswering',
     component: Layout,
-    redirect: '/guide/index',
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/guide/index'),
-        name: 'Guide',
-        meta: { title: 'guide', icon: 'guide', noCache: true }
+        path: 'questionAnswering',
+        component: () => import('@/views/question-answering/index'),
+        name: 'questionAnswering',
+        meta: { title: '智能问答', icon: 'el-icon-cpu', affix: false }
       }
     ]
   },
+  // {
+  //   path: '/documentation',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/documentation/index'),
+  //       name: 'Documentation',
+  //       meta: { title: 'documentation', icon: 'documentation', affix: false }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/guide',
+  //   component: Layout,
+  //   redirect: '/guide/index',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/guide/index'),
+  //       name: 'Guide',
+  //       meta: { title: 'guide', icon: 'guide', noCache: true }
+  //     }
+  //   ]
+  // },
   {
     path: '/profile',
     component: Layout,
@@ -186,7 +210,7 @@ export const asyncRoutes = [
 
   /** when your routing map is too long, you can split it into small modules **/
   componentsRouter,
-  chartsRouter,
+  // chartsRouter,
   nestedRouter,
   tableRouter,
 
