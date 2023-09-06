@@ -6,12 +6,6 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
-/* Router Modules */
-import componentsRouter from './modules/components'
-// import chartsRouter from './modules/charts'
-import tableRouter from './modules/table'
-import nestedRouter from './modules/nested'
-
 /**
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -39,15 +33,19 @@ import nestedRouter from './modules/nested'
  * all roles can be accessed
  */
 export const constantRoutes = [
-  // {
-  //   path: '/login',
-  //   component: () => import('@/views/login/index'),
-  //   hidden: true
-  // },
   {
-    path: '/',
-    name: 'home',
-    component: () => import('@/views/home/index'),
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
+  {
+    path: '/engineeringProjectControl',
+    component: () => import('@/views/largeScreen/engineering-project-control/index'),
+    hidden: true
+  },  
+  {
+    path: '/jobRiskControl',
+    component: () => import('@/views/largeScreen/job-risk-control/index'),
     hidden: true
   },  
   {
@@ -60,19 +58,43 @@ export const constantRoutes = [
     component: () => import('@/views/error-page/401'),
     hidden: true
   },
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/dashboard',
-  //   children: [
-  //     {
-  //       path: 'dashboard',
-  //       component: () => import('@/views/dashboard/index'),
-  //       name: 'Dashboard',
-  //       meta: { title: 'dashboard', icon: 'dashboard', affix: true }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Dashboard',
+        meta: { title: 'dashboard', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
+  {
+    path: '/userManagement',
+    component: Layout,
+    children: [
+      {
+        path: 'userManagement',
+        component: () => import('@/views/user-management/index'),
+        name: 'UserManagement',
+        meta: { title: '用户管理', icon: 'user', affix: false }
+      }
+    ]
+  },
+  {
+    path: '/resourceAlocation',
+    component: Layout,
+    children: [
+      {
+        path: 'resourceAlocation',
+        component: () => import('@/views/resource-allocation/index'),
+        name: 'ResourceAlocation',
+        meta: { title: '资源配置', icon: 'el-icon-setting', affix: false }
+      }
+    ]
+  },
 ]
 
 /**
